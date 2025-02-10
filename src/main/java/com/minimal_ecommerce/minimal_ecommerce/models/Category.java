@@ -3,9 +3,9 @@ package com.minimal_ecommerce.minimal_ecommerce.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -17,4 +17,6 @@ public class Category {
     private Long Id;
     private String name;
     private String description;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products;
 }
